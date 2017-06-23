@@ -15,10 +15,39 @@
 
   <br>
   <label for="band_name">Artist
-  <input type="text" name="" value="">
+    <select name="album[band_id]">
+      <% Band.all.each do |band| %>
+        <option
+          <%= "selected" if album.band_id == band.id%>
+          value="<%= band.id %>">
+          <%= band.name %>
+        </option>
+      <% end %>
+    </select>
   </label>
 
   <br>
+
+  <label for="year">Year</label>
+  <input type="number" name="album[year]" value="<%= album.year %>">
+
+  <br>
+
+  <label for="album_live_t">Live</label>
+  <input
+    type="radio"
+    name="album[live]"
+    value="t"
+    id="album_live_t"
+    <% "checked" if album.live %>>
+
+  <label for="album_live_f">Studio</label>
+  <input
+    type="radio"
+    name="album[live]"
+    value="f"
+    id="album_live_f"
+    <% "checked" unless album.live %>>
 
   <input type="submit" value="Submit">
 </form>
