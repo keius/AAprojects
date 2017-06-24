@@ -1,25 +1,14 @@
-<h1><% @band.name %></h1>
-
-<h2>Albums</h2>
+<h1> <%= @band.name %>  </h1>
 
 <ul>
   <% @band.albums.each do |album| %>
-  <li> <%= link_to album.name, album_url(album) %> </li>
+    <li> <%= link_to album.name, album_url(album) %> </li>
   <% end %>
 </ul>
 
-<%= link_to "New Album", new_band_album_url(@band) %>
 <br>
-<%= link_to "Edit Band", edit_band_url(@band) %>
-<br>
-<form action="<%= band_url(@band) %>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
 
-  <input type="submit" value="Delete Band">
-</form>
-<br>
-<%= link_to "All Bands", bands_url %>
+<%= link_to 'Add Album', new_band_album_url(@band.id) %>
+<%= link_to 'All Bands', bands_url  %>
+<%= button_to 'Edit Band', band_url(@band), method: :patch %>
+<%= button_to 'Delete Band', band_url(@band), method: :delete %>

@@ -1,5 +1,6 @@
 class BandsController < ApplicationController
-  before_action :require_user!
+
+  before_action :require_logged_in
 
   def index
     @bands = Band.all
@@ -14,9 +15,9 @@ class BandsController < ApplicationController
   def create
     @band = Band.new(band_params)
     if @band.save
-      redirect_to band_url(@band)
+      redirect_to bands_url
     else
-      flash.now[:error] = @band.errors.full_messages
+      flash.now[:errors] = @band.errors.full_messages
       render :new
     end
   end
@@ -26,14 +27,9 @@ class BandsController < ApplicationController
     render :edit
   end
 
-  def show
-    @band = Band.find_by(params[:id])
-    render :show
-  end
-
   def update
-    @band = Band.find_by(params[:id])
-    if @band.update(band_params)
+    @band = Band.find(params[:id])
+    if @band.update_attributes
       redirect_to band_url(@band)
     else
       flash.now[:errors] = @band.errors.full_messages
@@ -41,14 +37,21 @@ class BandsController < ApplicationController
     end
   end
 
+  def show
+    @band = Band.find(params[:id])
+    render :show
+  end
+
   def destroy
-    @band = Band.find_by(params[:id])
+    @band = Band.find(params[:id])
     @band.destroy
-    redirect_to bands_url
+    redirect_to root_url
   end
 
   private
+
   def band_params
     params.require(:band).permit(:name)
   end
+
 end

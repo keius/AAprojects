@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
-  root to: redirect("/bands")
+
+  resources :users, only: [:create, :new, :show]
+
+  resource :session, only: [:create, :new, :destroy]
 
   resources :bands do
     resources :albums, only: [:new]
   end
 
-  resources :albums, only: [:create, :show, :destroy, :edit, :update] do
+  resources :albums, except: [:index] do
     resources :tracks, only: [:new]
   end
 
-  resources :users, only: [:new, :create, :show]
-  
-  resources :tracks, only: [:create, :show, :destroy, :edit, :update]
+  resources :tracks, except: [:index]
 
-  resource :session, only: [:new, :create, :destroy]
+  root to: 'bands#index'
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

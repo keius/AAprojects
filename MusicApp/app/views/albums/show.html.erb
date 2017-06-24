@@ -1,27 +1,14 @@
 <h1><%= @album.name %></h1>
 
-<h2>Tracks</h2>
-
 <ul>
-  <% @album.tracks.each do |track| %>
-  <li> <a href="<%= track_url(track) %>"><%= track.name %></a> </li>
+  <% @album.tracks.each do |track|  %>
+    <li><%= link_to track.name, track_url(track) %></li>
   <% end %>
 </ul>
 
-  <a href="<%= new_album_track %>">New Track</a>
+<p>Artist: <%= Band.find(@album.band_id).name %></p>
+<p><%= @album.live ? "Live" : "Studio" %></p>
+<p>Year: <%= @album.year %></p>
 
-<br>
-  
-
-<br>
-<form action="<%= band_url(@band) %>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
-
-  <input type="submit" value="Delete Band">
-</form>
-<br>
-<%= link_to "All Bands", bands_url %>
+<%= link_to "Add Track", new_album_track_url(@album.id) %>
+<%= link_to "Artist Albums", band_url(@album.band_id) %>

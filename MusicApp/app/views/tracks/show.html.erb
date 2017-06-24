@@ -1,0 +1,12 @@
+<h1> <%= @track.ord %> : <%=@track.name%> </h1>
+
+<p> By <%= @track.band.name %> </p>
+<p> Album:  <%= @track.album.name %> </p>
+<p> <%= @track.bonus ? 'Bonus' : 'Regular' %></p>
+<p> Lyrics: <%=@track.lyrics%> </p>
+
+<br>
+
+<%= button_to "Edit Track", edit_track_url, method: :patch %>
+<%= button_to "Delete Track", track_url, method: :delete %>
+<%= link_to "Back to Album", album_url(@track.album_id) %>
