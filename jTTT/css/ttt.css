@@ -1,0 +1,49 @@
+li {
+  float: left;
+}
+
+.ttt {
+
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  border-left: 10px solid black;
+  border-top: 10px solid black;
+  list-style: none;
+  float: left;
+}
+
+.mark {
+  background-color: white;
+  text-align: center;
+  font-size: 50px;
+  font-family: monospace;
+}
+
+.winner {
+  background-color: green;
+  text-decoration-color: white;
+}
+
+.loser {
+  text-decoration-color: red;
+}
+
+.square:last-of-type {
+  border-right: 10px solid black;
+}
+
+.row:last-of-type .square {
+  border-bottom: 10px solid black;
+}
+
+.square:hover {
+  background-color: yellow;
+}
+
+.row {
+  width: 340px;
+}
