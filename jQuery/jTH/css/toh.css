@@ -1,0 +1,33 @@
+.tower {
+  text-align: center;
+  display: inline-block;
+  width: 150px;
+  margin-left: 50px;
+  background-color: transparent;
+  border-bottom: 20px solid black;
+  list-style: none;
+}
+
+.disk {
+  margin: 10px auto;
+  display: block;
+  height: 50px;
+  border-radius: 25px;
+  background-color: red;
+}
+
+.disk:onclick {
+  
+}
+
+.disk[size="0"] {
+  width: 70px;
+}
+
+.disk[size="1"] {
+  width: 110px;
+}
+
+.disk[size="2"] {
+  width: 150px;
+}
