@@ -1,0 +1,23 @@
+/*@import sunny_url(https://media.giphy.com/media/jk9L41aToGZQA/giphy.gif);*/
+
+section {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5%;
+
+  border: 10px solid black;
+
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+}
+
+section#clock {
+  background-color: #7F0500;
+  color: white;
+}
+
+section#weather {
+  background: url("https://media.giphy.com/media/jk9L41aToGZQA/giphy.gif");
+}
