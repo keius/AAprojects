@@ -6,13 +6,13 @@ const nullUser = Object.freeze({
   errors: []
 });
 
-export const sessionReducer = (state = nullUser, action) => {
+const sessionReducer = (state = nullUser, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
     const currentUser = action.currentUser;
-      return merge({}, nullUser, {currentUser});
+      return merge({}, nullUser, {currentUser: currentUser});
     case RECEIVE_ERRORS:
       const errors = action.errors;
       return merge({}, nullUser, {errors});
@@ -20,3 +20,5 @@ export const sessionReducer = (state = nullUser, action) => {
       return state;
   }
 };
+
+export default sessionReducer;
